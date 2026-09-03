@@ -1,0 +1,46 @@
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from app.database import Base, engine
+from app.models import ImportJob, ImportRecord
+from app.routes.imports import router as imports_router
+
+
+Base.metadata.create_all(bind=engine)
+
+
+app = FastAPI(
+    title="CSV Import & Validation API",
+    version="1.0.0",
+)
+
+
+origins = [
+    "http://localhost:5173",
+]
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+app.include_router(imports_router)
+
+
+@app.get("/")
+def root():
+    return {
+        "message": "CSV Import & Validation API is running"
+    }
+
+
+@app.get("/api/health")
+def health_check():
+    return {
+        "status": "healthy"
+    }

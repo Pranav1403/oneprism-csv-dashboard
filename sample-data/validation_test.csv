@@ -1,0 +1,7 @@
+name,email,phone,company,city
+Pranav Nair,pranav@example.com,9876543210,OnePrism,Bhilai
+,rahul@example.com,9876543211,Google,Mumbai
+Amit Kumar,invalid-email,9876543212,Microsoft,Delhi
+Neha Sharma,pranav@example.com,9876543213,TCS,Pune
+Ravi Kumar,ravi@example.com,123,Infosys,Bangalore
+Priya Singh,priya@example.com,9876543215,,Hyderabad
